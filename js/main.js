@@ -78,7 +78,7 @@ document.querySelector('button').addEventListener('click', function() {
 
 	for (i = 1;; i = i + 1) {
 		liftingLevel [i] = liftingLevel [i - 1] + liftingLevel [i - 1] * liftingPercentage / 100;
-		if (liftingLevel [i] > criticalLevel) break;
+		if (liftingLevel [i] >= criticalLevel) break;
 	}
 /*	console.log ('динамика роста уровня реки ' + liftingLevel);
 	console.log('через ' + i + ' ч ' + 'уровень превысит критический уровень  ' + criticalLevel + ' и станет ' + liftingLevel [i]);
