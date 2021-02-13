@@ -120,5 +120,5 @@ function getDrawingResults(liftingLevel, criticalLevel) {
 	}
 
 	document.querySelector('main').insertAdjacentHTML('beforeend',
-		`<p class="block1">Динамика роста уровня реки ${levelDynamics}</p>\<p class="block2">Через ${liftingLevel.length - 1} ч уровень реки превысит критический уровень ${criticalLevel} и станет ${lastLevel}, если не прорвет плотину &#128526</p>`);
+		`<p class="block1">Динамика роста уровня реки ${levelDynamics}</p>\<p class="block2">Через ${liftingLevel.length - 1} ч уровень реки превысит критический уровень ${criticalLevel} и станет ${lastLevel}, если не прорвет дамбу &#128526</p>`);
 }
