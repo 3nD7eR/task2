@@ -97,10 +97,12 @@ document.querySelector('button').addEventListener('click', function() {
 function getDrawingPage() {
 	document.querySelector('body').insertAdjacentHTML('beforeend',
 		'<header>' +
-		'<h1>НАВОДНЕНИЕ</h1>' + '<h2>Введите параметры</h2>' +
-		'<h3>(1,2,3,4,5,6,7,8,9,10;           уровень реки м)</h3>' +
+		'<h1>НАВОДНЕНИЕ</h1>' + '<h2>Введите параметры </h2>' +
+		'<h3>(вы можете их изменять, затем нажмите ввод, вы  можете повторить так много раз)</h3>' +
+		'<h3>(на построенном графике, наведите курсор на точку)</h3>' +
+		'<h3>(1,2,3,4,5,6,7,8,9,10; уровень реки м)</h3>' +
 		'<h3>(10,20,30,40,50,60,70,80,90,100; процент поднятия уровня реки от прошлого уровня за один час %)</h3>' +
-		'<h3>(1,2,3,4,5,6,7,8,9,10;           критический уровень реки м)</h3>' +
+		'<h3>(1,2,3,4,5,6,7,8,9,10; критический уровень реки м)</h3>' +
 		'<div class="input">' +
 		'<input id="numberIn1" type="text" autocomplete="off" placeholder="уровень реки"' +
 		' value=""/>' +
@@ -116,21 +118,24 @@ function getDrawingPage() {
 }
 
 function getDrawingResults(liftingLevel, criticalLevel) {
-	let lastLevel, index, criticalTimeMin;
-	let levelDynamics = [];
+	let lastLevel, criticalTimeMin;
 
 	lastLevel = (liftingLevel [liftingLevel.length - 1] - criticalLevel).toFixed(2);
-	for (index = 0; index < liftingLevel.length; index = index + 1) {
-		levelDynamics [index] = liftingLevel [index].toFixed(2);
 
-	}
+/*	старая версия
+	let levelDynamics = [], index;
+		for (index = 0; index < liftingLevel.length; index = index + 1) {
+			levelDynamics [index] = liftingLevel [index].toFixed(2);
+		}
+*/
 	criticalTimeMin = (criticalLevel - liftingLevel [liftingLevel.length - 2]) / ((liftingLevel [liftingLevel.length - 1] - liftingLevel [liftingLevel.length - 2]) / 60);
 	criticalTimeMin = criticalTimeMin.toFixed(0);
 
 	document.querySelector('main').insertAdjacentHTML('beforeend',
-		`<p class="block1">Динамика роста уровня реки ${levelDynamics}</p>\<p class="block2">Через
-		 ${liftingLevel.length - 2} ч ${criticalTimeMin} мин уровень реки достигнит критического уровня
-		  ${criticalLevel} м &#9888</p>\<p class="block3">Через ${liftingLevel.length - 1} ч уровень реки превысит критический уровень ${criticalLevel} м на ${lastLevel} м, если не прорвет дамбу &#128526</p>`);
+		`<p class="block2">Через ${liftingLevel.length - 2} ч ${criticalTimeMin} мин уровень реки достигнит критического 
+			уровня ${criticalLevel
+} м &#9888</p>\<p class="block3">Через ${liftingLevel.length - 1} ч уровень реки превысит 
+			критический уровень ${criticalLevel} м на ${lastLevel} м, если не прорвет дамбу &#128526</p>`);
 }
 
 function getDrawingChart(liftingLevel, criticalLevel) {
@@ -141,7 +146,7 @@ function getDrawingChart(liftingLevel, criticalLevel) {
 	let drawingLiftingLevel = [];
 
 	for (let i = 0; i <= liftingLevel.length - 1; i = i + 1) {
-		labels[i] = i.toString();
+		labels [i] = i.toString();
 		drawingCriticalLevel [i] = criticalLevel;
 		drawingLiftingLevel [i] = Math.round( liftingLevel [i] * 100 + Number.EPSILON ) / 100;
 	}
@@ -155,6 +160,7 @@ function getDrawingChart(liftingLevel, criticalLevel) {
 			datasets: [{
 				label: 'динамика роста уровня реки',
 				backgroundColor: 'rgba(0, 255, 255, 0.9)',
+				lineTension: 0,
 				data: drawingLiftingLevel
 			}, {
 				label: 'критический уровень',

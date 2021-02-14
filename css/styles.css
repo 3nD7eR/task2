@@ -55,10 +55,10 @@ main {
 	margin-top: 20px;
 }
 
-.block1 {
+/*.block1 {
 	color: aqua;
 	text-align: center;
-}
+} */
 
 .block2 {
 	color: #f98035;
@@ -70,6 +70,19 @@ main {
 	text-align: center;
 }
 
+.river_chart {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	background-color: black;
+	width: 600px;
+}
+
+#chart {
+	background-color: white;
+	margin-left: 930px;
+}
+
 footer {
 	display: flex;
 	flex-direction: row;
@@ -77,17 +90,4 @@ footer {
 	font-size: 12px;
 	margin-top: 20px;
 	color: #f90711;
-}
-
-#chart {
-	margin-left: 900px;
-	background-color: white;
-}
-
-.river_chart {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	background-color: black;
-	width: 600px;
 }
