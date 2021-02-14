@@ -117,7 +117,7 @@ function getDrawingResults(liftingLevel, criticalLevel) {
 	let lastLevel, index, criticalTimeMin;
 	let levelDynamics = [];
 
-	lastLevel = liftingLevel [liftingLevel.length - 1].toFixed(2);
+	lastLevel = (liftingLevel [liftingLevel.length - 1] - criticalLevel).toFixed(2);
 	for (index = 0; index < liftingLevel.length; index = index + 1) {
 		levelDynamics [index] = liftingLevel [index].toFixed(2);
 
@@ -128,5 +128,5 @@ function getDrawingResults(liftingLevel, criticalLevel) {
 	console.log(criticalTimeMin);
 */
 	document.querySelector('main').insertAdjacentHTML('beforeend',
-		`<p class="block1">Динамика роста уровня реки ${levelDynamics}</p>\<p class="block2">Через ${liftingLevel.length - 2} ч ${criticalTimeMin} мин уровень реки достигнит критического уровня ${criticalLevel} м &#9888</p>\<p class="block3">Через ${liftingLevel.length - 1} ч уровень реки превысит критический уровень ${criticalLevel} м и станет ${lastLevel} м, если не прорвет дамбу &#128526</p>`);
+		`<p class="block1">Динамика роста уровня реки ${levelDynamics}</p>\<p class="block2">Через ${liftingLevel.length - 2} ч ${criticalTimeMin} мин уровень реки достигнит критического уровня ${criticalLevel} м &#9888</p>\<p class="block3">Через ${liftingLevel.length - 1} ч уровень реки превысит критический уровень ${criticalLevel} м на ${lastLevel} м, если не прорвет дамбу &#128526</p>`);
 }
