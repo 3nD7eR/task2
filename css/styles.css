@@ -61,9 +61,15 @@ main {
 }
 
 .block2 {
+	color: #f98035;
+	margin-left: 50px;
+}
+
+.block3 {
 	color: #ff47cc;
 	margin-left: 50px;
 }
+
 footer {
 	display: flex;
 	flex-direction: row;
