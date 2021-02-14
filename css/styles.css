@@ -57,17 +57,17 @@ main {
 
 .block1 {
 	color: aqua;
-	margin-left: 50px;
+	text-align: center;
 }
 
 .block2 {
 	color: #f98035;
-	margin-left: 50px;
+	text-align: center;
 }
 
 .block3 {
 	color: #ff47cc;
-	margin-left: 50px;
+	text-align: center;
 }
 
 footer {
@@ -77,4 +77,17 @@ footer {
 	font-size: 12px;
 	margin-top: 20px;
 	color: #f90711;
+}
+
+#chart {
+	margin-left: 900px;
+	background-color: white;
+}
+
+.river_chart {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	background-color: black;
+	width: 600px;
 }
