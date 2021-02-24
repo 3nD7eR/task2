@@ -151,6 +151,44 @@ function getDrawingChart(liftingLevel, criticalLevel) {
 		drawingLiftingLevel [i] = Math.round( liftingLevel [i] * 100 + Number.EPSILON ) / 100;
 	}
 
+/*	отражение точки пересечения на графике
+	let a;
+	let b;
+
+	for (let i = 0; i <= liftingLevel.length; i = i + 1) {
+		if (i === liftingLevel.length - 1) {
+			a =(criticalLevel - liftingLevel [liftingLevel.length - 2]) / (liftingLevel [liftingLevel.length - 1] - liftingLevel [liftingLevel.length - 2]);
+			b = i - 1 +a;
+			labels [i] = (b).toFixed(2);
+			drawingCriticalLevel [i] = criticalLevel;
+			drawingLiftingLevel [i] = criticalLevel;
+		console.log('a = ' + a);
+		console.log('b = ' + b);
+		console.log(labels [i]);
+		//console.log(drawingCriticalLevel [i]);
+		//console.log(drawingLiftingLevel [i]);
+		}
+		if (i === liftingLevel.length) {
+			labels [i] = (liftingLevel.length - 1).toString();
+			drawingCriticalLevel [i] = criticalLevel;
+			drawingLiftingLevel [i] = Math.round( liftingLevel [liftingLevel.length - 1] * 100 + Number.EPSILON ) / 100;
+		console.log(labels [i]);
+		//console.log(drawingCriticalLevel [i]);
+		//console.log(drawingLiftingLevel [i]);
+		}
+		else {
+			labels [i] = (i).toString();
+			drawingCriticalLevel [i] = criticalLevel;
+			drawingLiftingLevel [i] = Math.round( liftingLevel [i] * 100 + Number.EPSILON ) / 100;
+		console.log(labels [i]);
+		//console.log(drawingCriticalLevel [i]);
+		//console.log(drawingLiftingLevel [i]);
+		}
+	}
+	console.log(labels);
+*/
+
+
 	document.querySelector('main').insertAdjacentHTML('afterend','<div class = "river_chart"><canvas id="chart"></canvas></div>');
 	ctx = document.getElementById('chart').getContext('2d');
 	lineChart = new Chart(ctx, {
@@ -158,7 +196,7 @@ function getDrawingChart(liftingLevel, criticalLevel) {
 		data: {
 			labels: labels,
 			datasets: [{
-				label: 'динамика роста уровня реки',
+				label: 'уровень реки',
 				backgroundColor: 'rgba(0, 255, 255, 0.9)',
 				lineTension: 0,
 				data: drawingLiftingLevel
